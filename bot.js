@@ -4,7 +4,7 @@ const client = new Discord.Client();
 //const config = require('./config.json');
 
 client.on('ready', () => {
-    client.user.setStatus('Help command: <help');
+    client.user.setGame(game, ['Help command: <help']);
     console.log('I am ready!');
 });
 
