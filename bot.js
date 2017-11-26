@@ -21,7 +21,17 @@ client.on('message', message => {
 });
 client.on('message', message => {
     if (message.content === '<version') {
-    	message.channel.sendMessage('**StatBot is running on JavaScript.**\n**Version: 0.4.2**');
+    	message.channel.sendMessage('**StatBot is running on JavaScript.**\n**Version: 0.4.3**');
+  	}
+});
+client.on('message', message => {
+    if (message.content === '<stat') {
+    	message.channel.sendMessage('__**Stats: ONLINE**__');
+  	}
+});
+client.on('message', message => {
+    if (message.content === '<help') {
+    	message.channel.sendMessage('__**Help Commands**__\n\n*<help - Show help commands*\n*<ping - Reply pong*\n*<bot - Show the list of bot hosted by Regis*\n*<version - Show StatBot version*\n*<stat - Show StatBot stats*');
   	}
 });
 
