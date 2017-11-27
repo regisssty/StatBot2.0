@@ -1,7 +1,7 @@
 {
-  "name": "Test",
-  "description": "Test",
-  "version": "0.0.0",
+  "name": "Regis",
+  "description": "StatBot",
+  "version": "0.4.6",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"

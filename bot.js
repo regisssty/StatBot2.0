@@ -22,7 +22,7 @@ client.on('message', message => {
 });
 client.on('message', message => {
     if (message.content === '<version') {
-    	message.channel.sendMessage('**StatBot is running on JavaScript.**\n**Version: 0.4.3**');
+    	message.channel.sendMessage('**StatBot is running on JavaScript.**\n**Version: 0.4.6**');
   	}
 });
 client.on('message', message => {
