@@ -1,41 +1,54 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
-//const yt = require('ytdl-core');
-//const config = require('./config.json');
+const PREFIX = "c";
+var bot = new Discord.Client();
 
-client.on('ready', () => {
-    client.user.setPresence({game: {name: "Help command: <help", type: 0}});
-    console.log('I am ready!');
+bot.on("message", function (message) {
+    console.log(message.content);
+    bot.user.setPresence({game: {name: "with Regis!", type: 0}});
+    //bot.user.setPresence({game: {name: "Maintenance Mode", type: 0}});
+    //bot.user.setPresence({game: {name: "Sleep Mode", type: 0}});
+});
+ 
+//Welcome and promote new member 
+ bot.on("guildMemberAdd", function(member) {
+    member.guild.channels.find("name", "mod-log").sendMessage(":pushpin: :white_check_mark: " + member.toString() + " (" + member.id + ") join the server.");
+
+    member.addRole(member.guild.roles.find("name", "Member"));
 });
 
+//If user left the server, announce it
+ bot.on("guildMemberRemove", function(member) {
+    member.guild.channels.find("name", "mod-log").sendMessage(":pushpin: :x: " + member.toString() + " (" + member.id + ") left the server.");
 
-//Old Function
-client.on('message', message => {
-    if (message.content === '<ping') {
-    	message.channel.sendMessage('pong');
-  	}
 });
-client.on('message', message => {
-    if (message.content === '<bot') {
-    	message.reply('Here are the current bot hosted by @Rëgîš#6434.\n__*Moderation*__\n@ModBot#3385\n\n__*MusicBot*__\n@Bonlicious#3934\n@DELICIOUS#5285\n@RegisBot#6361\n@SpeakBot#2502\n@SpeakBot#2589\n@SpeakBot#2812\n@BON BOT SLAVE#2874\n\n__*GameTracker*__\n@GameTracker#0585');
-  	}
+ 
+//Bot command function for everyone to use such as test respond of the bot to user. 
+bot.on("message", function (message) {
+    if (message.author.equals(bot.user)) return;
+ 
+    if (!message.content.startsWith(PREFIX)) return;
+ 
+    var args = message.content.substring(PREFIX.length).split(" ");
+ 
+    switch (args[0].toLowerCase()) {
+        case "help":
+            message.channel.sendMessage("__**Help Command**__\n\n\ncping - Show Ping!\ncinfo - Show StatBot information\ncstat - Show StatBot's state");
+            break;
+        case "ping":
+            message.channel.sendMessage("Your ping is `" + `${Date.now() - message.createdTimestamp}` + " ms`");
+            break;
+        case "info":
+            message.channel.sendMessage("I am running on JavaScript created by @Rëgîš#6434");
+            break;
+        case "stat":
+            message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.5c [Alpha Build]*");
+            break;
+        default:
+            message.channel.sendMessage("Invalid command issued~");
+    }
 });
-client.on('message', message => {
-    if (message.content === '<version') {
-    	message.channel.sendMessage('**StatBot is running on JavaScript.**\n**Version: 0.4.6**');
-  	}
-});
-client.on('message', message => {
-    if (message.content === '<stat') {
-    	message.channel.sendMessage('__**Stats: ONLINE**__');
-  	}
-});
-client.on('message', message => {
-    if (message.content === '<help') {
-    	message.channel.sendMessage('__**Help Commands**__\n\n*<help - Show help commands*\n*<ping - Reply pong*\n*<bot - Show the list of bot hosted by Regis*\n*<version - Show StatBot version*\n*<stat - Show StatBot stats*');
-  	}
-});
+
 
 
 // THIS  MUST  BE  THIS  WAY
-client.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
