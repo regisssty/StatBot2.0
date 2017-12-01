@@ -20,7 +20,7 @@ bot.on("message", function (message) {
         `:pushpin: :wave: ${member.user} Bot Joined.`)
       .addField('Bot ID',
         `${member.id}`)
-      bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel.  
+      bot.channels.find("name", "mod-log").sendEmbed(embed); // announce on preferred text channel.  
     } else {
 
     let guild = member.guild;
@@ -31,8 +31,8 @@ bot.on("message", function (message) {
         `:pushpin: :white_check_mark: ${member.user} has joined the server!`)
       .addField('Member ID',
         `${member.id}`)
-    bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel. 
-    member.addRole(member.guild.roles.find("name", "test")); //Grant roles if is user
+    bot.channels.find("name", "mod-log").sendEmbed(embed); // announce on preferred text channel. 
+    member.addRole(member.guild.roles.find("name", "Member")); //Grant roles if is user
 }
 });
 
