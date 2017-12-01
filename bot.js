@@ -11,15 +11,55 @@ bot.on("message", function (message) {
  
 //Welcome and promote new member 
  bot.on("guildMemberAdd", function(member) {
-    member.guild.channels.find("name", "mod-log").sendMessage(":pushpin: :white_check_mark: " + member.toString() + " (" + member.id + ") join the server.");
+    if (member.bot) {
+      let guild = member.guild;
+      var embed = new Discord.RichEmbed()
+      .setColor(0x00AE86)
+      .setTimestamp()
+      .addField('Bot Update',
+        `:pushpin: :wave: ${member.user} Bot Joined.`)
+      .addField('Bot ID',
+        `${member.id}`)
+      bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel.  
+    } else {
 
-    member.addRole(member.guild.roles.find("name", "Member"));
+    let guild = member.guild;
+    var embed = new Discord.RichEmbed()
+      .setColor(0x00AE86)
+      .setTimestamp()
+      .addField('Member Update',
+        `:pushpin: :white_check_mark: ${member.user} has joined the server!`)
+      .addField('Member ID',
+        `${member.id}`)
+    bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel. 
+    member.addRole(member.guild.roles.find("name", "test")); //Grant roles if is user
+}
 });
 
 //If user left the server, announce it
  bot.on("guildMemberRemove", function(member) {
-    member.guild.channels.find("name", "mod-log").sendMessage(":pushpin: :x: " + member.toString() + " (" + member.id + ") left the server.");
+    if (member.bot) {
+      let guild = member.guild;
+      var embed = new Discord.RichEmbed()
+      .setColor(0xff0505)
+      .setTimestamp()
+      .addField('Bot Update',
+        `:pushpin: :x: ${member.user} Bot Lefted.`)
+      .addField('Bot ID',
+        `${member.id}`)
+      bot.channels.find("name", "mod-log").sendEmbed(embed); // announce on preferred text channel.  
+    } else {
 
+    let guild = member.guild;
+    var embed = new Discord.RichEmbed()
+      .setColor(0xff0505)
+      .setTimestamp()
+      .addField('Member Update',
+        `:pushpin: :x: ${member.user} has lefted the server!`)
+      .addField('Member ID',
+        `${member.id}`)
+    bot.channels.find("name", "mod-log").sendEmbed(embed); // announce on preferred text channel. 
+}
 });
  
 //Bot command function for everyone to use such as test respond of the bot to user. 
@@ -41,7 +81,7 @@ bot.on("message", function (message) {
             message.channel.sendMessage("I am running on JavaScript created by @Rëgîš#6434");
             break;
         case "stat":
-            message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.5c [Alpha Build]*");
+            message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.2*");
             break;
         default:
             message.channel.sendMessage("Invalid command issued~");
