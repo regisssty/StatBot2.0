@@ -98,7 +98,7 @@ bot.on("message", function (message) {
  
     switch (args[0].toLowerCase()) {
         case "help":
-            message.channel.sendMessage("__**Help Command**__\n\n\ncping - Show Ping!\ncinfo - Show StatBot information\ncstat - Show StatBot's state\nuptime - Show how long StatBot's uptime");
+            message.channel.sendMessage("__**Help Command**__\nPrefix: =\n\nping - Show Ping!\ninfo - Show StatBot information\nstat - Show StatBot's state\nuptime - Show how long StatBot's uptime");
             break;
         case "ping":
             message.channel.sendMessage("Your ping is `" + `${Date.now() - message.createdTimestamp}` + " ms`");
