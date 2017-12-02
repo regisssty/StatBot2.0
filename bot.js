@@ -1,13 +1,10 @@
 const Discord = require('discord.js');
+<<<<<<< HEAD
 const PREFIX = "=";
+=======
+const PREFIX = "c";
+>>>>>>> parent of 82c5d35... Change prefix
 var bot = new Discord.Client();
-
-//time travel
-var upSecs = 0
-var upMins = 0
-var upHours = 0
-var upDays = 0
-
 
 bot.on("message", function (message) {
     console.log(message.content);
@@ -68,25 +65,6 @@ bot.on("message", function (message) {
     bot.channels.find("name", "mod-log").sendEmbed(embed); // announce on preferred text channel. 
 }
 });
-
-//real time
-setInterval(function() {
-
-        upSecs = upSecs + 1
-        if (upSecs >= 60) {
-            upSecs = 0
-            upMins = upMins + 1
-		}
-        if (upMins >= 60) {
-            upMins = 0
-            upHours = upHours + 1
-		}
-        if (upHours >= 60) {
-            upHours = 0
-            upDays = upDays + 1
-		}
-
-},1000)
  
 //Bot command function for everyone to use such as test respond of the bot to user. 
 bot.on("message", function (message) {
@@ -108,9 +86,6 @@ bot.on("message", function (message) {
             break;
         case "stat":
             message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.2*");
-            break;
-        case "uptime":
-            message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
             break;
         default:
             message.channel.sendMessage("Invalid command issued~");
