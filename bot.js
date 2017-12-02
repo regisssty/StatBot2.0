@@ -38,6 +38,8 @@ bot.on("message", function (message) {
         `:pushpin: :white_check_mark: ${member.user} has joined the server!`)
       .addField('Member ID',
         `${member.id}`)
+      .addField('Member Roles',
+        `${guild.roles.find("name", "Member")}`)//This only display user roles at first join only
     bot.channels.find("name", "mod-log").sendEmbed(embed); // announce on preferred text channel. 
     member.addRole(member.guild.roles.find("name", "Member")); //Grant roles if is user
 }
@@ -107,7 +109,7 @@ bot.on("message", function (message) {
             message.channel.sendMessage("I am running on JavaScript created by @Rëgîš#6434");
             break;
         case "stat":
-            message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.2*");
+            message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.2a*");
             break;
         case "uptime":
             message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
