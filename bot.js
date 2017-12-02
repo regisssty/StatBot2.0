@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const PREFIX = "=";
 var bot = new Discord.Client();
 
 //time travel
