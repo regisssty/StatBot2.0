@@ -71,7 +71,7 @@ bot.on("message", function (message) {
 }
 });
 
-//guild member update
+/* //guild member update
  bot.on("guildMemberUpdate", function(member) {
     let guild = member.guild;
     var embed = new Discord.RichEmbed()
@@ -82,7 +82,7 @@ bot.on("message", function (message) {
       .addField('Member ID',
         `${member.id}`)
     bot.channels.find("name", "mod-log").sendEmbed(embed); // change general to your preferred TEXT channel. 
-}); 
+});  */
 
 //real time
 setInterval(function() {
@@ -122,7 +122,7 @@ bot.on("message", function (message) {
             message.channel.sendMessage("I am running on JavaScript created by @Rëgîš#6434");
             break;
         case "stat":
-            message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.2a*");
+            message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.3*");
             break;
         case "uptime":
             message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
