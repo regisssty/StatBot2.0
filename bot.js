@@ -71,6 +71,19 @@ bot.on("message", function (message) {
 }
 });
 
+//guild member update
+ bot.on("guildMemberUpdate", function(member) {
+    let guild = member.guild;
+    var embed = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setTimestamp()
+      .addField('Member Update [Roles]',
+        `:pushpin: ${member.user} role has been updated from ${member.roles.id} to  ${member.roles.newMember}`)
+      .addField('Member ID',
+        `${member.id}`)
+    bot.channels.find("name", "mod-log").sendEmbed(embed); // change general to your preferred TEXT channel. 
+}); 
+
 //real time
 setInterval(function() {
 
