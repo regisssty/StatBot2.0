@@ -138,7 +138,7 @@ if(command === "senthelp") {
   if(!message.member.roles.some(r=>["Sentinel"].includes(r.name)) )
     return message.reply("you have no permission to use this command. Reason: You are not a Sentinel!"); 
 
-  message.reply("I have DM you the command.");
+  message.reply(":mailbox_with_mail: I have DM you the command.");
 /*   message.author.sendMessage("__**Sentinel Help Commands**__\n\nkick - Kick member from server"); */
   message.author.sendMessage("__**Sentinel Help Commands**__\n\nComing Soon!");
 }
@@ -149,7 +149,7 @@ if(command === "staffhelp") {
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator"].includes(r.name)) )
     return message.reply("you have no permission to use this command. Reason: You are not a staff!"); 
 
-  message.reply("I have DM you the command.");
+  message.reply(":mailbox_with_mail: I have DM you the command.");
   message.author.sendMessage("__**Staff Help Commands**__\n\nkick - Kick member from server\nban - Ban member from server");
 }
 
@@ -159,8 +159,8 @@ if(command === "superstaffhelp") {
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator"].includes(r.name)) )
     return message.reply("you have no permission to use this command. Reason: You are not a superstaff!"); 
 
-  message.reply("I have DM you the command.");
-  message.author.sendMessage("__**Staff Help Commands**__\n\nkick - Kick member\nban - Ban member\nsay - Announce message on channel");
+  message.reply(":mailbox_with_mail: I have DM you the command.");
+  message.author.sendMessage("__**SuperStaff Help Commands**__\n\nkick - Kick member\nban - Ban member\nsay - Announce message on channel");
 }
 
 //
