@@ -126,11 +126,44 @@ if(command === "info") {
 }
 
 if(command === "stat") {
-message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.4*");
+message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.4a*");
 }
 if(command === "uptime") {
   message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
 }
+
+//
+//sentinel help command
+if(command === "senthelp") {	
+  if(!message.member.roles.some(r=>["Sentinel"].includes(r.name)) )
+    return message.reply("you have no permission to use this command. Reason: You are not a staff!"); 
+
+  message.reply("I have DM you the command.");
+/*   message.author.sendMessage("__**Sentinel Help Commands**__\n\nkick - Kick member from server"); */
+  message.author.sendMessage("__**Sentinel Help Commands**__\n\nComing Soon!");
+}
+
+//
+// mod, supermod, admin, owner help command
+if(command === "staffhelp") {	
+  if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator"].includes(r.name)) )
+    return message.reply("you have no permission to use this command. Reason: You are not a staff!"); 
+
+  message.reply("I have DM you the command.");
+  message.author.sendMessage("__**Staff Help Commands**__\n\nkick - Kick member from server\nban - Ban member from server");
+}
+
+//
+// super mod, admin, owner help command
+if(command === "superstaffhelp") {	
+  if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator"].includes(r.name)) )
+    return message.reply("you have no permission to use this command. Reason: You are not a staff!"); 
+
+  message.reply("I have DM you the command.");
+  message.author.sendMessage("__**Staff Help Commands**__\n\nkick - Kick member\nban - Ban member\nsay - Announce message on channel");
+}
+
+//
 //Staff command
 if(command === "kick") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator"].includes(r.name)) )
@@ -172,6 +205,16 @@ await member.ban(reason)
 message.reply(`has banned ${member.user.tag} from server.\nBanned Member id: ${member.id}\nReason: ${reason}`);
 }
 
+//
+//Super staff command
+if(command === "say") {	
+  if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator"].includes(r.name)) )
+    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+
+  var sayMessage = args.join(" ");
+  message.delete().catch(O_o=>{});
+  message.channel.send(sayMessage);
+}
 });
 
 //Bot command function for everyone to use such as test respond of the bot to user. 
