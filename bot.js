@@ -136,7 +136,7 @@ if(command === "uptime") {
 //sentinel help command
 if(command === "senthelp") {	
   if(!message.member.roles.some(r=>["Sentinel"].includes(r.name)) )
-    return message.reply("you have no permission to use this command. Reason: You are not a staff!"); 
+    return message.reply("you have no permission to use this command. Reason: You are not a Sentinel!"); 
 
   message.reply("I have DM you the command.");
 /*   message.author.sendMessage("__**Sentinel Help Commands**__\n\nkick - Kick member from server"); */
@@ -157,7 +157,7 @@ if(command === "staffhelp") {
 // super mod, admin, owner help command
 if(command === "superstaffhelp") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator"].includes(r.name)) )
-    return message.reply("you have no permission to use this command. Reason: You are not a staff!"); 
+    return message.reply("you have no permission to use this command. Reason: You are not a superstaff!"); 
 
   message.reply("I have DM you the command.");
   message.author.sendMessage("__**Staff Help Commands**__\n\nkick - Kick member\nban - Ban member\nsay - Announce message on channel");
