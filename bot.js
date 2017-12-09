@@ -103,8 +103,79 @@ setInterval(function() {
 
 },1000)
  
+bot.on("message", async message => {
+	
+if(message.author.bot) return;
+if(message.content.indexOf(PREFIX) !== 0) return;
+
+var args = message.content.substring(PREFIX.length).split(" ");
+const command = args.shift().toLowerCase();
+
+//Bot command start here
+//General commands
+if(command === "help") {
+  message.channel.sendMessage("__**Help Command**__\nPrefix: =\n\nping - Show Ping!\ninfo - Show StatBot information\nstat - Show StatBot's state\nuptime - Show how long StatBot's uptime");
+}
+
+if(command === "ping") {
+  message.channel.sendMessage("Your ping is `" + `${Date.now() - message.createdTimestamp}` + " ms`");
+}
+
+if(command === "info") {
+  message.channel.sendMessage("I am running on JavaScript created by @Rëgîš#6434");
+}
+
+if(command === "stat") {
+message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.4*");
+}
+if(command === "uptime") {
+  message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
+}
+//Staff command
+if(command === "kick") {	
+  if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator"].includes(r.name)) )
+    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+
+let member = message.mentions.members.first();
+if(!member)
+  return message.reply("[Invalid mention] Please mention a valid member and indicate a reason for the kick.");
+
+if(!member.kickable)
+  return message.reply("I cannot kick this user.")
+
+let reason = args.slice(1).join(' ');
+if(!reason)
+  return message.reply("[No reason detected] Please mention a valid member and indicate a reason for the kick.");
+
+await member.kick(reason)
+  .catch(error => message.reply(`Sorry ${message.author}, I couldn't kick because of : ${error}`));
+message.reply(`has kicked ${member.user.tag} from server.\nKicked Member id: ${member.id}\nReason: ${reason}`);
+}
+
+if(command === "ban") {	
+  if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator"].includes(r.name)) )
+    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+
+let member = message.mentions.members.first();
+if(!member)
+  return message.reply("[Invalid mention] Please mention a valid member and indicate a reason for the ban.");
+
+if(!member.bannable)
+  return message.reply("I cannot ban this user.")
+
+let reason = args.slice(1).join(' ');
+if(!reason)
+  return message.reply("[No reason detected] Please mention a valid member and indicate a reason for the ban.");
+
+await member.ban(reason)
+  .catch(error => message.reply(`Sorry ${message.author}, I couldn't ban because of : ${error}`));
+message.reply(`has banned ${member.user.tag} from server.\nBanned Member id: ${member.id}\nReason: ${reason}`);
+}
+
+});
+
 //Bot command function for everyone to use such as test respond of the bot to user. 
-bot.on("message", function (message) {
+/* bot.on("message", function (message) {
     if (message.author.equals(bot.user)) return;
  
     if (!message.content.startsWith(PREFIX)) return;
@@ -130,7 +201,7 @@ bot.on("message", function (message) {
         default:
             message.channel.sendMessage("Invalid command issued~");
     }
-});
+}); */
 
 
 
