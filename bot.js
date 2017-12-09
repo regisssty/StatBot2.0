@@ -114,7 +114,7 @@ const command = args.shift().toLowerCase();
 //Bot command start here
 //General commands
 if(command === "help") {
-  message.channel.sendMessage("__**Help Command**__\nPrefix: =\n\nping - Show Ping!\ninfo - Show StatBot information\nstat - Show StatBot's state\nuptime - Show how long StatBot's uptime");
+  message.channel.sendMessage("__**Help Command**__\nPrefix: =\n\nhelp- Show this page\nping - Show Ping!\ninfo - Show StatBot information\nstat - Show StatBot's state\nuptime - Show how long StatBot's uptime\nsenthelp - Show sentinel help commands\nstaffhelp - Shop staff help commands\nsuperstaffhelp - Show super staff help commands");
 }
 
 if(command === "ping") {
