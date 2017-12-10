@@ -217,34 +217,6 @@ if(command === "say") {
 }
 });
 
-//Bot command function for everyone to use such as test respond of the bot to user. 
-/* bot.on("message", function (message) {
-    if (message.author.equals(bot.user)) return;
- 
-    if (!message.content.startsWith(PREFIX)) return;
- 
-    var args = message.content.substring(PREFIX.length).split(" ");
- 
-    switch (args[0].toLowerCase()) {
-        case "help":
-            message.channel.sendMessage("__**Help Command**__\nPrefix: =\n\nping - Show Ping!\ninfo - Show StatBot information\nstat - Show StatBot's state\nuptime - Show how long StatBot's uptime");
-            break;
-        case "ping":
-            message.channel.sendMessage("Your ping is `" + `${Date.now() - message.createdTimestamp}` + " ms`");
-            break;
-        case "info":
-            message.channel.sendMessage("I am running on JavaScript created by @Rëgîš#6434");
-            break;
-        case "stat":
-            message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.3*");
-            break;
-        case "uptime":
-            message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
-            break;
-        default:
-            message.channel.sendMessage("Invalid command issued~");
-    }
-}); */
 
 
 
