@@ -213,7 +213,7 @@ if(command === "say") {
 
   var sayMessage = args.join(" ");
   message.delete().catch(O_o=>{});
-  message.channel.send(sayMessage);
+  message.channel.send("**[System]** " + sayMessage);
 }
 });
 
