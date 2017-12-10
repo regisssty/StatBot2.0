@@ -11,7 +11,7 @@ var upDays = 0
 
 bot.on("message", function (message) {
     console.log(message.content);
-    bot.user.setPresence({game: {name: "with Regis!", type: 0}});
+    bot.user.setPresence({game: {name: "Help command: =help", type: 0}});
     //bot.user.setPresence({game: {name: "Maintenance Mode", type: 0}});
     //bot.user.setPresence({game: {name: "Sleep Mode", type: 0}});
 });
@@ -114,7 +114,7 @@ const command = args.shift().toLowerCase();
 //Bot command start here
 //General commands
 if(command === "help") {
-  message.channel.sendMessage("__**Help Command**__\nPrefix: =\n\nhelp- Show this page\nping - Show Ping!\ninfo - Show StatBot information\nstat - Show StatBot's state\nuptime - Show how long StatBot's uptime\nsenthelp - Show sentinel help commands\nstaffhelp - Shop staff help commands\nsuperstaffhelp - Show super staff help commands");
+  message.channel.sendMessage("__**Help Command**__\nPrefix: =\n\nhelp- Show this page\nping - Show Ping!\ninfo - Show StatBot information\nstat - Show StatBot's state\nuptime - Show how long StatBot's uptime\nsenthelp - Show sentinel help commands\nstaffhelp - Show staff help commands\nsuperstaffhelp - Show super staff help commands\nsayhelp - Show sayhelp(Disabled)");
 }
 
 if(command === "ping") {
@@ -164,13 +164,14 @@ if(command === "superstaffhelp") {
 }
 //
 //global help command for [SYSTEM], [DiscordOwner], [Admin], [Manager], [Moderator], [Sentinel]
-if(command === "sayhelp") {
+//============
+/* if(command === "sayhelp") {
   if(!message.member.roles.some(r=>["YOUR KING", "2ns in command", "Super Moderator", "Moderator", "Sentinel"]) )
     return message.reply("Invalid command enter. Reason: Your roles for this command has been rejected.");
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
   message.author.sendMessage("__**sayhelp command**__\n\nsay - [SYSTEM] msg (For host only)\nownersay - [DiscordOwner] msg (Owner of the discord server only)\nadminsay - [Admin] msg (Admin use)\nsupersay - [Manager] msg (Super Moderator use)\nmodsay - [Moderator] msg (Moderator use)\nsentsay - [Sentinel] msg (Sentinel use)");
-}
+} */
 
 //
 //Staff command
@@ -219,7 +220,8 @@ message.reply(`has banned ${member.user.tag} from server.\nBanned Member id: ${m
 
 // global announce
 // Host use only
-if(command === "say") {	
+//==========
+/* if(command === "say") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command"].includes(r.name)) )
     return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
 
@@ -281,7 +283,7 @@ if(command === "sentsay") {
   var sayMessage = args.join(" ");
   message.delete().catch(O_o=>{});
   message.channel.send("**[Sentinel]** " + sayMessage);
-}
+} */
 });
 
 
