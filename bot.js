@@ -157,10 +157,19 @@ if(command === "staffhelp") {
 // super mod, admin, owner help command
 if(command === "superstaffhelp") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator"].includes(r.name)) )
-    return message.reply("you have no permission to use this command. Reason: You are not a superstaff!"); 
+    return message.reply("You have no permission to use this command. Reason: You are not a superstaff!"); 
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
-  message.author.sendMessage("__**SuperStaff Help Commands**__\n\nkick - Kick member\nban - Ban member\nsay - Announce message on channel");
+  message.author.sendMessage("__**SuperStaff Help Commands**__\n\nkick - Kick member\nban - Ban member");
+}
+//
+//global help command for [SYSTEM], [DiscordOwner], [Admin], [Manager], [Moderator], [Sentinel]
+if(command === "sayhelp") {
+  if(!message.member.roles.some(r=>["YOUR KING", "2ns in command", "Super Moderator", "Moderator", "Sentinel"]) )
+    return message.reply("Invalid command enter. Reason: Your roles for this command has been rejected.");
+
+  message.reply(":mailbox_with_mail: I have DM you the command.");
+  message.author.sendMessage("__**sayhelp command**__\n\nsay - [SYSTEM] msg (For host only)\nownersay - [DiscordOwner] msg (Owner of the discord server only)\nadminsay - [Admin] msg (Admin use)\nsupersay - [Manager] msg (Super Moderator use)\nmodsay - [Moderator] msg (Moderator use)\nsentsay - [Sentinel] msg (Sentinel use)");
 }
 
 //
@@ -207,13 +216,71 @@ message.reply(`has banned ${member.user.tag} from server.\nBanned Member id: ${m
 
 //
 //Super staff command
+
+// global announce
+// Host use only
 if(command === "say") {	
-  if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["YOUR KING", "2nd in command"].includes(r.name)) )
     return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
 
   var sayMessage = args.join(" ");
   message.delete().catch(O_o=>{});
-  message.channel.send("**[System]** " + sayMessage);
+  message.channel.send("**[SYSTEM]** " + sayMessage);
+}
+
+//
+// discord owner
+if(command === "ownersay") {	
+  if(!message.member.roles.some(r=>["YOUR KING"].includes(r.name)) )
+    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+
+  var sayMessage = args.join(" ");
+  message.delete().catch(O_o=>{});
+  message.channel.send("**[DiscordOwner]** " + sayMessage);
+}
+
+//
+// admin
+if(command === "adminsay") {	
+  if(!message.member.roles.some(r=>["2nd in command"].includes(r.name)) )
+    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+
+  var sayMessage = args.join(" ");
+  message.delete().catch(O_o=>{});
+  message.channel.send("**[Admin]** " + sayMessage);
+}
+
+//
+// super mod
+if(command === "supersay") {	
+  if(!message.member.roles.some(r=>["Super Moderator"].includes(r.name)) )
+    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+
+  var sayMessage = args.join(" ");
+  message.delete().catch(O_o=>{});
+  message.channel.send("**[Manager]** " + sayMessage);
+}
+
+//
+// mod
+if(command === "modsay") {	
+  if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
+    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+
+  var sayMessage = args.join(" ");
+  message.delete().catch(O_o=>{});
+  message.channel.send("**[Moderator]** " + sayMessage);
+}
+
+//
+//sentinel
+if(command === "sentsay") {	
+  if(!message.member.roles.some(r=>["Sentinel"].includes(r.name)) )
+    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+
+  var sayMessage = args.join(" ");
+  message.delete().catch(O_o=>{});
+  message.channel.send("**[Sentinel]** " + sayMessage);
 }
 });
 
