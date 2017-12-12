@@ -126,7 +126,7 @@ if(command === "info") {
 }
 
 if(command === "stat") {
-message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.4a*");
+message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.5*");
 }
 if(command === "uptime") {
   message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
@@ -174,6 +174,28 @@ if(command === "superstaffhelp") {
 } */
 
 //
+
+//Event 
+if(command === "christmas2017") {
+
+let role = message.guild.roles.find("name", "Christmas 2017");
+let member = message.member;
+
+message.reply("**Christmas 2017** has been added to your account.");
+member.addRole(role).catch(console.error);
+}
+
+/* if(command === "newyear2018") {
+
+let role = message.guild.roles.find("name", "NewYear 2018");
+let member = message.member;
+
+message.reply("**NewYear 2018** has been added to your account.");
+member.addRole(role).catch(console.error);
+} */
+
+// end of event
+
 //Staff command
 if(command === "kick") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator"].includes(r.name)) )
