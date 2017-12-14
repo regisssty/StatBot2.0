@@ -123,10 +123,11 @@ if(command === "ping") {
 
 if(command === "info") {
   message.channel.sendMessage("I am running on JavaScript created by @Rëgîš#6434");
+/*   message.channel.sendMessage("Hi im StatBot, I love to eat pie."); */
 }
 
 if(command === "stat") {
-message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.5*");
+message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.4*");
 }
 if(command === "uptime") {
   message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
@@ -136,7 +137,7 @@ if(command === "uptime") {
 //sentinel help command
 if(command === "senthelp") {	
   if(!message.member.roles.some(r=>["Sentinel"].includes(r.name)) )
-    return message.reply("you have no permission to use this command. Reason: You are not a Sentinel!"); 
+    return message.reply("You have no permission to use this command. Reason: You are not a Sentinel!"); 
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
 /*   message.author.sendMessage("__**Sentinel Help Commands**__\n\nkick - Kick member from server"); */
@@ -147,7 +148,7 @@ if(command === "senthelp") {
 // mod, supermod, admin, owner help command
 if(command === "staffhelp") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator"].includes(r.name)) )
-    return message.reply("you have no permission to use this command. Reason: You are not a staff!"); 
+    return message.reply("You have no permission to use this command. Reason: You are not a staff!"); 
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
   message.author.sendMessage("__**Staff Help Commands**__\n\nkick - Kick member from server\nban - Ban member from server");
@@ -172,18 +173,129 @@ if(command === "superstaffhelp") {
   message.reply(":mailbox_with_mail: I have DM you the command.");
   message.author.sendMessage("__**sayhelp command**__\n\nsay - [SYSTEM] msg (For host only)\nownersay - [DiscordOwner] msg (Owner of the discord server only)\nadminsay - [Admin] msg (Admin use)\nsupersay - [Manager] msg (Super Moderator use)\nmodsay - [Moderator] msg (Moderator use)\nsentsay - [Sentinel] msg (Sentinel use)");
 } */
-
 //
 
+//Game Category Roles
+/*League of Legends*/
+if(command === "lol") {
+
+let role = message.guild.roles.find("name", "LoL");
+let member = message.member;
+
+message.reply("You have successfully subscribe to role **LoL** for League of Legends category!");
+member.addRole(role).catch(console.error);
+}
+/*PlayerUnknown BattleGround*/
+if(command === "pubg") {
+
+let role = message.guild.roles.find("name", "PUBG");
+let member = message.member;
+
+message.reply("You have successfully subscribe to role **PUBG** for PLAYERUNKNOWN'S BATTLEGROUNDS category!");
+member.addRole(role).catch(console.error);
+}
+/*ARK Survival*/
+if(command === "ark") {
+
+let role = message.guild.roles.find("name", "ARK");
+let member = message.member;
+
+message.reply("You have successfully subscribe to role **ARK** for ARK: Survival Evolved category!");
+member.addRole(role).catch(console.error);
+}
+/*CS:GO*/
+if(command === "cs:go") {
+
+let role = message.guild.roles.find("name", "CS:GO");
+let member = message.member;
+
+message.reply("You have successfully subscribe to role **CS:GO** for CS:GO category!");
+member.addRole(role).catch(console.error);
+}
+/*World of Warcraft*/
+if(command === "wow") {
+
+let role = message.guild.roles.find("name", "WoW");
+let member = message.member;
+
+message.reply("You have successfully subscribe to role **WoW** for World of Warcraft category!");
+member.addRole(role).catch(console.error);
+}
+/*OverWatch*/
+if(command === "overwatch") {
+
+let role = message.guild.roles.find("name", "OverWatch");
+let member = message.member;
+
+message.reply("You have successfully subscribe to role **OverWatch** for OverWatch category!");
+member.addRole(role).catch(console.error);
+}
+/*HeartStones*/
+if(command === "heartstones") {
+
+let role = message.guild.roles.find("name", "HeartStones");
+let member = message.member;
+
+message.reply("You have successfully subscribe to role **HeartStones** for HeartStones category!");
+member.addRole(role).catch(console.error);
+}
+/*GTA*/
+if(command === "gta") {
+
+let role = message.guild.roles.find("name", "GTA");
+let member = message.member;
+
+message.reply("You have successfully subscribe to role **GTA** for GTA category!");
+member.addRole(role).catch(console.error);
+}
+/*WatchDogs*/
+if(command === "watchdogs") {
+
+let role = message.guild.roles.find("name", "WatchDogs");
+let member = message.member;
+
+message.reply("You have successfully subscribe to role **WatchDogs** for WatchDogs category!");
+member.addRole(role).catch(console.error);
+}
+/*TheCrew*/
+if(command === "thecrew") {
+
+let role = message.guild.roles.find("name", "TheCrew");
+let member = message.member;
+
+message.reply("You have successfully subscribe to role **TheCrew** for TheCrew category!");
+member.addRole(role).catch(console.error);
+}
+/*Garry's Mod*/
+if(command === "garrysmod") {
+
+let role = message.guild.roles.find("name", "GarrysMod");
+let member = message.member;
+
+message.reply("You have successfully subscribe to role **GarrysMod** for GarrysMod category!");
+member.addRole(role).catch(console.error);
+}
+/*MapleStory*/
+if(command === "maplestory") {
+
+let role = message.guild.roles.find("name", "MapleStory");
+let member = message.member;
+
+message.reply("You have successfully subscribe to role **MapleStory** for MapleStory category!");
+member.addRole(role).catch(console.error);
+}
+
+//End of Game category Roles
+
 //Event 
-if(command === "christmas2017") {
+/* if(command === "christmas2017") {
 
 let role = message.guild.roles.find("name", "Christmas 2017");
 let member = message.member;
 
 message.reply("**Christmas 2017** has been added to your account.");
 member.addRole(role).catch(console.error);
-}
+} */
 
 /* if(command === "newyear2018") {
 
