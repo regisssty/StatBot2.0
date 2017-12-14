@@ -127,7 +127,7 @@ if(command === "info") {
 }
 
 if(command === "stat") {
-message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.4*");
+message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.5*");
 }
 if(command === "uptime") {
   message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
