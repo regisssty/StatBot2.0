@@ -127,7 +127,7 @@ if(command === "info") {
 }
 
 if(command === "stat") {
-message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.5*");
+message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.4*");
 }
 if(command === "uptime") {
   message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
@@ -135,12 +135,12 @@ if(command === "uptime") {
 
 //
 //sentinel help command
-if(command === "senthelp") {	
+/* if(command === "senthelp") {	
   if(!message.member.roles.some(r=>["Sentinel"].includes(r.name)) )
     return message.reply("You have no permission to use this command. Reason: You are not a Sentinel!"); 
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
-/*   message.author.sendMessage("__**Sentinel Help Commands**__\n\nkick - Kick member from server"); */
+  message.author.sendMessage("__**Sentinel Help Commands**__\n\nkick - Kick member from server");
   message.author.sendMessage("__**Sentinel Help Commands**__\n\nComing Soon!");
 }
 
@@ -162,7 +162,7 @@ if(command === "superstaffhelp") {
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
   message.author.sendMessage("__**SuperStaff Help Commands**__\n\nkick - Kick member\nban - Ban member");
-}
+} */
 //
 //global help command for [SYSTEM], [DiscordOwner], [Admin], [Manager], [Moderator], [Sentinel]
 //============
@@ -288,24 +288,38 @@ member.addRole(role).catch(console.error);
 //End of Game category Roles
 
 //Event 
-/* if(command === "christmas2017") {
+
+/* 
+if(command === "christmas2017") {
 
 let role = message.guild.roles.find("name", "Christmas 2017");
 let member = message.member;
 
 message.reply("**Christmas 2017** has been added to your account.");
 member.addRole(role).catch(console.error);
-} */
+message.delete().catch(O_o=>{});
+}
 
-/* if(command === "newyear2018") {
+if(command === "newyear2018") {
 
 let role = message.guild.roles.find("name", "NewYear 2018");
 let member = message.member;
 
 message.reply("**NewYear 2018** has been added to your account.");
 member.addRole(role).catch(console.error);
-} */
+message.delete().catch(O_o=>{});
+} 
+if(command === "300milestone") {
 
+let role = message.guild.roles.find("name", "300 Milestone Achived");
+let member = message.member;
+
+message.reply("**300 Milestone Achived** has been added to your account.");
+member.addRole(role).catch(console.error);
+message.delete().catch(O_o=>{});
+}
+ */
+ 
 // end of event
 
 //Staff command
@@ -326,7 +340,8 @@ if(!reason)
 
 await member.kick(reason)
   .catch(error => message.reply(`Sorry ${message.author}, I couldn't kick because of : ${error}`));
-message.reply(`has kicked ${member.user.tag} from server.\nKicked Member id: ${member.id}\nReason: ${reason}`);
+message.channel.sendMessage(`${member.user} has been kicked from server.\nKicked Member id: ${member.id}\nModerator: ${message.author}\nReason: ${reason}`);
+message.delete().catch(O_o=>{});
 }
 
 if(command === "ban") {	
@@ -346,7 +361,8 @@ if(!reason)
 
 await member.ban(reason)
   .catch(error => message.reply(`Sorry ${message.author}, I couldn't ban because of : ${error}`));
-message.reply(`has banned ${member.user.tag} from server.\nBanned Member id: ${member.id}\nReason: ${reason}`);
+message.channel.sendMessage(`${member.user.tag} has been banned from server.\nBanned Member id: ${member.id}\nModerator: ${message.author}\nReason: ${reason}`);
+message.delete().catch(O_o=>{});
 }
 
 //
@@ -355,7 +371,7 @@ message.reply(`has banned ${member.user.tag} from server.\nBanned Member id: ${m
 // global announce
 // Host use only
 //==========
-/* if(command === "say") {	
+if(command === "say") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command"].includes(r.name)) )
     return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
 
@@ -417,7 +433,7 @@ if(command === "sentsay") {
   var sayMessage = args.join(" ");
   message.delete().catch(O_o=>{});
   message.channel.send("**[Sentinel]** " + sayMessage);
-} */
+}
 });
 
 
