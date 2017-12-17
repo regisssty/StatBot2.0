@@ -127,7 +127,7 @@ if(command === "info") {
 }
 
 if(command === "stat") {
-message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.4*");
+message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.5*");
 }
 if(command === "uptime") {
   message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
@@ -135,12 +135,12 @@ if(command === "uptime") {
 
 //
 //sentinel help command
-/* if(command === "senthelp") {	
+if(command === "senthelp") {	
   if(!message.member.roles.some(r=>["Sentinel"].includes(r.name)) )
     return message.reply("You have no permission to use this command. Reason: You are not a Sentinel!"); 
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
-  message.author.sendMessage("__**Sentinel Help Commands**__\n\nkick - Kick member from server");
+/*   message.author.sendMessage("__**Sentinel Help Commands**__\n\nkick - Kick member from server"); */
   message.author.sendMessage("__**Sentinel Help Commands**__\n\nComing Soon!");
 }
 
@@ -162,17 +162,17 @@ if(command === "superstaffhelp") {
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
   message.author.sendMessage("__**SuperStaff Help Commands**__\n\nkick - Kick member\nban - Ban member");
-} */
+}
 //
 //global help command for [SYSTEM], [DiscordOwner], [Admin], [Manager], [Moderator], [Sentinel]
 //============
-/* if(command === "sayhelp") {
+if(command === "sayhelp") {
   if(!message.member.roles.some(r=>["YOUR KING", "2ns in command", "Super Moderator", "Moderator", "Sentinel"]) )
     return message.reply("Invalid command enter. Reason: Your roles for this command has been rejected.");
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
   message.author.sendMessage("__**sayhelp command**__\n\nsay - [SYSTEM] msg (For host only)\nownersay - [DiscordOwner] msg (Owner of the discord server only)\nadminsay - [Admin] msg (Admin use)\nsupersay - [Manager] msg (Super Moderator use)\nmodsay - [Moderator] msg (Moderator use)\nsentsay - [Sentinel] msg (Sentinel use)");
-} */
+}
 //
 
 //Game Category Roles
