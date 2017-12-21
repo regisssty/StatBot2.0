@@ -289,7 +289,7 @@ member.addRole(role).catch(console.error);
 
 //Event 
 
-/* 
+ 
 if(command === "christmas2017") {
 
 let role = message.guild.roles.find("name", "Christmas 2017");
@@ -300,7 +300,7 @@ member.addRole(role).catch(console.error);
 message.delete().catch(O_o=>{});
 }
 
-if(command === "newyear2018") {
+/* if(command === "newyear2018") {
 
 let role = message.guild.roles.find("name", "NewYear 2018");
 let member = message.member;
@@ -317,8 +317,8 @@ let member = message.member;
 message.reply("**300 Milestone Achived** has been added to your account.");
 member.addRole(role).catch(console.error);
 message.delete().catch(O_o=>{});
-}
- */
+} */
+ 
  
 // end of event
 
