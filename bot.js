@@ -127,7 +127,7 @@ if(command === "info") {
 }
 
 if(command === "stat") {
-message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.5*");
+message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.5a*");
 }
 if(command === "uptime") {
   message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
@@ -289,8 +289,8 @@ member.addRole(role).catch(console.error);
 
 //Event 
 
- 
-if(command === "christmas2017") {
+ //Christmas
+/* if(command === "christmas2017") {
 
 let role = message.guild.roles.find("name", "Christmas 2017");
 let member = message.member;
@@ -298,9 +298,10 @@ let member = message.member;
 message.reply("**Christmas 2017** has been added to your account.");
 member.addRole(role).catch(console.error);
 message.delete().catch(O_o=>{});
-}
-
-/* if(command === "newyear2018") {
+} */
+//
+//NewYear
+if(command === "newyear2018") {
 
 let role = message.guild.roles.find("name", "NewYear 2018");
 let member = message.member;
@@ -309,7 +310,9 @@ message.reply("**NewYear 2018** has been added to your account.");
 member.addRole(role).catch(console.error);
 message.delete().catch(O_o=>{});
 } 
-if(command === "300milestone") {
+//
+//Milestone
+/* if(command === "300milestone") {
 
 let role = message.guild.roles.find("name", "300 Milestone Achived");
 let member = message.member;
@@ -318,7 +321,7 @@ message.reply("**300 Milestone Achived** has been added to your account.");
 member.addRole(role).catch(console.error);
 message.delete().catch(O_o=>{});
 } */
- 
+// 
  
 // end of event
 
