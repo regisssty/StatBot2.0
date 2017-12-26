@@ -284,6 +284,15 @@ let member = message.member;
 message.reply("You have successfully subscribe to role **MapleStory** for MapleStory category!");
 member.addRole(role).catch(console.error);
 }
+/*Dota*/
+if(command === "dota") {
+
+let role = message.guild.roles.find("name", "Dota");
+let member = message.member;
+
+message.reply("You have successfully subscribe to role **Dota** for Dota category!");
+member.addRole(role).catch(console.error);
+}
 
 //End of Game category Roles
 
