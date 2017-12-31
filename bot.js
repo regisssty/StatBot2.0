@@ -310,7 +310,7 @@ message.delete().catch(O_o=>{});
 } */
 //
 //NewYear
-if(command === "newyear2018") {
+/* if(command === "newyear2018") {
 
 let role = message.guild.roles.find("name", "NewYear 2018");
 let member = message.member;
@@ -318,10 +318,10 @@ let member = message.member;
 message.reply("**NewYear 2018** has been added to your account.");
 member.addRole(role).catch(console.error);
 message.delete().catch(O_o=>{});
-} 
+}  */
 //
 //Milestone
-/* if(command === "300milestone") {
+if(command === "300milestone") {
 
 let role = message.guild.roles.find("name", "300 Milestone Achived");
 let member = message.member;
@@ -329,7 +329,7 @@ let member = message.member;
 message.reply("**300 Milestone Achived** has been added to your account.");
 member.addRole(role).catch(console.error);
 message.delete().catch(O_o=>{});
-} */
+}
 // 
  
 // end of event
