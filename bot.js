@@ -27,7 +27,7 @@ bot.on("message", function (message) {
         `:pushpin: :wave: ${member.user} Bot Joined.`)
       .addField('Bot ID',
         `${member.id}`)
-      bot.channels.find("name", "mod-log").sendEmbed(embed); // announce on preferred text channel.  
+      bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel.  
     } else {
 
     let guild = member.guild;
@@ -40,7 +40,7 @@ bot.on("message", function (message) {
         `${member.id}`)
       .addField('Member Roles',
         `${guild.roles.find("name", "Member")}`)//This only display user roles at first join only
-    bot.channels.find("name", "mod-log").sendEmbed(embed); // announce on preferred text channel. 
+    bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel. 
     member.addRole(member.guild.roles.find("name", "Member")); //Grant roles if is user
 }
 });
@@ -56,7 +56,7 @@ bot.on("message", function (message) {
         `:pushpin: :x: ${member.user} Bot Lefted.`)
       .addField('Bot ID',
         `${member.id}`)
-      bot.channels.find("name", "mod-log").sendEmbed(embed); // announce on preferred text channel.  
+      bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel.  
     } else {
 
     let guild = member.guild;
@@ -67,7 +67,7 @@ bot.on("message", function (message) {
         `:pushpin: :x: ${member.user} has lefted the server!`)
       .addField('Member ID',
         `${member.id}`)
-    bot.channels.find("name", "mod-log").sendEmbed(embed); // announce on preferred text channel. 
+    bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel. 
 }
 });
 
@@ -127,10 +127,13 @@ if(command === "info") {
 }
 
 if(command === "stat") {
-message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.5a*");
+message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.6*");
 }
 if(command === "uptime") {
   message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
+}
+if(command === "games") {
+ message.channel.sendMessage("Here are the current avaliable games category on bijs discord:\n\n**=lol** - League of Legends\n**=pubg** - PLAYERUNKNOWN'S BATTLEGROUNDS\n**=cs:go** - CS:GO\n**=ark** - Ark Survival\n**=dota** - dota/2\n**=wow** - World of Warcraft\n**=overwatch** - OverWatch\n**=heartstones** - HeartStones\n**=gta** - GTA\n**=watchdogs** - WatchDogs\n**=thecrew** - TheCrew\n**=garrysmod** - Garry's Mod\n");
 }
 
 //
