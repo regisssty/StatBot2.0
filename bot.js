@@ -53,7 +53,7 @@ bot.on("message", function (message) {
       .setColor(0xff0505)
       .setTimestamp()
       .addField('Bot Update',
-        `:pushpin: :x: ${member.user} Bot Lefted.`)
+        `:pushpin: :x: ${member.user} Bot Left.`)
       .addField('Bot ID',
         `${member.id}`)
       bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel.  
@@ -64,7 +64,7 @@ bot.on("message", function (message) {
       .setColor(0xff0505)
       .setTimestamp()
       .addField('Member Update',
-        `:pushpin: :x: ${member.user} has lefted the server!`)
+        `:pushpin: :x: ${member.user} has left the server!`)
       .addField('Member ID',
         `${member.id}`)
     bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel. 
