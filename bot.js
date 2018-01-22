@@ -41,7 +41,7 @@ bot.on("message", function (message) {
       .addField('Member Roles',
         `${guild.roles.find("name", "Member")}`)//This only display user roles at first join only
     bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel. 
-    member.addRole(member.guild.roles.find("name", "Green Club")); //Grant roles if is user
+    member.addRole(member.guild.roles.find("name", "GREEN CLUB")); //Grant roles if is user
 }
 });
 
