@@ -41,7 +41,7 @@ bot.on("message", function (message) {
       .addField('Member Roles',
         `${guild.roles.find("name", "Member")}`)//This only display user roles at first join only
     bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel. 
-    member.addRole(member.guild.roles.find("name", "Member")); //Grant roles if is user
+    member.addRole(member.guild.roles.find("name", "Green Club")); //Grant roles if is user
 }
 });
 
@@ -127,13 +127,13 @@ if(command === "info") {
 }
 
 if(command === "stat") {
-message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.6*");
+message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.7*");
 }
 if(command === "uptime") {
   message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
 }
 if(command === "games") {
- message.channel.sendMessage("Here are the current avaliable games category on bijs discord:\n\n**=lol** - League of Legends\n**=pubg** - PLAYERUNKNOWN'S BATTLEGROUNDS\n**=cs:go** - CS:GO\n**=ark** - Ark Survival\n**=dota** - dota/2\n**=wow** - World of Warcraft\n**=overwatch** - OverWatch\n**=heartstones** - HeartStones\n**=gta** - GTA\n**=watchdogs** - WatchDogs\n**=thecrew** - TheCrew\n**=garrysmod** - Garry's Mod\n");
+ message.channel.sendMessage("Here are the current avaliable games category on bijs discord:\n\n**=lol** - League of Legends\n**=pubg** - PLAYERUNKNOWN'S BATTLEGROUNDS\n**=cs:go** - CS:GO\n**=ark** - Ark Survival\n**=dota** - dota/2\n**=overwatch** - OverWatch\n**=gta** - GTA\n**=watchdogs** - WatchDogs\n**=thecrew** - TheCrew\n");
 }
 
 //
@@ -215,15 +215,6 @@ let member = message.member;
 message.reply("You have successfully subscribe to role **CS:GO** for CS:GO category!");
 member.addRole(role).catch(console.error);
 }
-/*World of Warcraft*/
-if(command === "wow") {
-
-let role = message.guild.roles.find("name", "WoW");
-let member = message.member;
-
-message.reply("You have successfully subscribe to role **WoW** for World of Warcraft category!");
-member.addRole(role).catch(console.error);
-}
 /*OverWatch*/
 if(command === "overwatch") {
 
@@ -231,15 +222,6 @@ let role = message.guild.roles.find("name", "OverWatch");
 let member = message.member;
 
 message.reply("You have successfully subscribe to role **OverWatch** for OverWatch category!");
-member.addRole(role).catch(console.error);
-}
-/*HeartStones*/
-if(command === "heartstones") {
-
-let role = message.guild.roles.find("name", "HeartStones");
-let member = message.member;
-
-message.reply("You have successfully subscribe to role **HeartStones** for HeartStones category!");
 member.addRole(role).catch(console.error);
 }
 /*GTA*/
@@ -267,24 +249,6 @@ let role = message.guild.roles.find("name", "TheCrew");
 let member = message.member;
 
 message.reply("You have successfully subscribe to role **TheCrew** for TheCrew category!");
-member.addRole(role).catch(console.error);
-}
-/*Garry's Mod*/
-if(command === "garrysmod") {
-
-let role = message.guild.roles.find("name", "GarrysMod");
-let member = message.member;
-
-message.reply("You have successfully subscribe to role **GarrysMod** for GarrysMod category!");
-member.addRole(role).catch(console.error);
-}
-/*MapleStory*/
-if(command === "maplestory") {
-
-let role = message.guild.roles.find("name", "MapleStory");
-let member = message.member;
-
-message.reply("You have successfully subscribe to role **MapleStory** for MapleStory category!");
 member.addRole(role).catch(console.error);
 }
 /*Dota*/

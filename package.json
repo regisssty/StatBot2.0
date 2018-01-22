@@ -1,13 +1,13 @@
 {
-  "name": "Test",
-  "description": "Test",
-  "version": "0.0.0",
+  "name": "StatBot",
+  "description": "Information",
+  "version": "0.6.7",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
   },
   "dependencies": {
-    "discord.js": "11.1.0",
+    "discord.js": "11.3.0",
     "request": "2.81.0",
     "ytdl-core" :  "github:fent/node-ytdl-core#master",
     "node-opus" : "^0.2.1"
