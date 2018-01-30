@@ -127,7 +127,7 @@ if(command === "info") {
 }
 
 if(command === "stat") {
-message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.6.7*");
+message.channel.sendMessage("__**StatBot: Online**__\n*Version: 0.7*");
 }
 if(command === "uptime") {
   message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
@@ -262,6 +262,17 @@ member.addRole(role).catch(console.error);
 }
 
 //End of Game category Roles
+
+//Livestream subscribe
+if(command === "streamnotify") {
+
+let role = message.guild.roles.find("name", "StreamNotify");
+let member = message.member;
+
+message.reply("You will be notify when our streamer when live!");
+member.addRole(role).catch(console.error);
+}
+//End of livestream subscribe
 
 //Event 
 
