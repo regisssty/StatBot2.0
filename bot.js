@@ -23,7 +23,7 @@ bot.on("message", function (message) {
       var embed = new Discord.RichEmbed()
       .setColor(0x00AE86)
       .setTimestamp()
-      .setFooter("Modbot created by Regis. ©Version 0.7")
+      .setFooter("Modbot created by Regis. ©Version 0.7.1_CNY_2018")
       .addField('Bot Update',
         `:pushpin: :wave: ${member.user} Bot Joined.`)
       .addField('Bot ID',
@@ -35,7 +35,7 @@ bot.on("message", function (message) {
     var embed = new Discord.RichEmbed()
       .setColor(0x00AE86)
       .setTimestamp()
-      .setFooter("Modbot created by Regis. ©Version 0.7")
+      .setFooter("Modbot created by Regis. ©Version 0.7.1_CNY_2018")
       .addField('Member Update',
         `:pushpin: :white_check_mark: ${member.user} has joined the server!`)
       .addField('Member ID',
@@ -54,7 +54,7 @@ bot.on("message", function (message) {
       var embed = new Discord.RichEmbed()
       .setColor(0xff0505)
       .setTimestamp()
-      .setFooter("Modbot created by Regis. ©Version 0.7")
+      .setFooter("Modbot created by Regis. ©Version 0.7.1_CNY_2018")
       .addField('Bot Update',
         `:pushpin: :x: ${member.user} Bot Left.`)
       .addField('Bot ID',
@@ -66,7 +66,7 @@ bot.on("message", function (message) {
     var embed = new Discord.RichEmbed()
       .setColor(0xff0505)
       .setTimestamp()
-      .setFooter("Modbot created by Regis. ©Version 0.7")
+      .setFooter("Modbot created by Regis. ©Version 0.7.1_CNY_2018")
       .addField('Member Update',
         `:pushpin: :x: ${member.user} has left the server!`)
       .addField('Member ID',
@@ -131,7 +131,7 @@ if(command === "info") {
 }
 
 if(command === "stat") {
-message.channel.sendMessage("__**ModBot: Online**__\n*Version: 0.7*");
+message.channel.sendMessage("__**ModBot: Online**__\n*Version: 0.7.1_CNY_2018*");
 }
 if(command === "uptime") {
   message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
@@ -291,16 +291,16 @@ member.addRole(role).catch(console.error);
 message.delete().catch(O_o=>{});
 } */
 //
-//NewYear
-/* if(command === "newyear2018") {
+//CNY
+if(command === "cny2018") {
 
-let role = message.guild.roles.find("name", "NewYear 2018");
+let role = message.guild.roles.find("name", "CNY 2018");
 let member = message.member;
 
-message.reply("**NewYear 2018** has been added to your account.");
+message.reply(":dog: **Happy CNY 2018!** :dog:");
 member.addRole(role).catch(console.error);
 message.delete().catch(O_o=>{});
-}  */
+}  
 //
 //Milestone
 if(command === "300milestone") {
