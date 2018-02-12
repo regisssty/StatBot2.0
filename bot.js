@@ -11,9 +11,9 @@ var upDays = 0
 
 bot.on("message", function (message) {
     console.log(message.content);
-    //bot.user.setPresence({game: {name: "Help command: =help", type: 0}});
+    bot.user.setPresence({game: {name: "Help command: =help", type: 2}});
     //bot.user.setPresence({game: {name: "Maintenance Mode", type: 0}});
-    bot.user.setActivity({game: {name: "Regis", type: 2}});
+    //bot.user.setActivity({game: {name: "Regis", type: 2}});
 });
  
 //Welcome and promote new member 
