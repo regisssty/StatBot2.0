@@ -11,7 +11,7 @@ var upDays = 0
 
 bot.on("message", function (message) {
     console.log(message.content);
-    bot.user.setPresence({game: {name: `${client.users.size} users`, type: 2}});
+    bot.user.setPresence({game: {name: `${bot.users.size}` "users", type: 2}});
     //bot.user.setPresence({game: {name: "Maintenance Mode", type: 0}});
     //bot.user.setActivity({game: {name: "Regis", type: 2}});
 });
