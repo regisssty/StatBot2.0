@@ -14,7 +14,7 @@ bot.on("message", function (message) {
     //bot.user.setPresence({game: {name: "Help command: =help", type: 0}});
     //bot.user.setPresence({game: {name: "Maintenance Mode", type: 0}});
     //bot.user.setPresence({game: {name: "Sleep Mode", type: 0}});
-    bot.user.setActivity({game: {name: "Regis"}});
+    bot.user.setPresence({game: {name: "=help", type: 2}});
 });
  
 //Welcome and promote new member 
