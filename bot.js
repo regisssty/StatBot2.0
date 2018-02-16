@@ -11,9 +11,10 @@ var upDays = 0
 
 bot.on("message", function (message) {
     console.log(message.content);
-    bot.user.setPresence({game: {name: `${bot.users.size} users`, type: 2}});
+    //bot.user.setPresence({game: {name: "Help command: =help", type: 0}});
     //bot.user.setPresence({game: {name: "Maintenance Mode", type: 0}});
-    //bot.user.setActivity({game: {name: "Regis", type: 2}});
+    //bot.user.setPresence({game: {name: "Sleep Mode", type: 0}});
+    bot.user.setPresence({game: {name: `${bot.users.size} users`, type: 2}});
 });
  
 //Welcome and promote new member 
@@ -23,11 +24,13 @@ bot.on("message", function (message) {
       var embed = new Discord.RichEmbed()
       .setColor(0x00AE86)
       .setTimestamp()
-      .setFooter("Modbot created by Regis. ©Version 0.7.1_CNY_2018")
+      .setFooter("Modbot created by Regis. ©Version 0.7.2")
       .addField('Bot Update',
         `:pushpin: :wave: ${member.user} Bot Joined.`)
       .addField('Bot ID',
         `${member.id}`)
+      .addField('Message',
+        `Hi ${member.user.tag}, welcome to **bijs discord server**!\nMake sure you have read our rules and guides at #welcome .\nGo see what are the current game category we have, type **=games**.\nEnojy and have lots of lots of funs!`)
       bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel.  
     } else {
 
@@ -35,13 +38,15 @@ bot.on("message", function (message) {
     var embed = new Discord.RichEmbed()
       .setColor(0x00AE86)
       .setTimestamp()
-      .setFooter("Modbot created by Regis. ©Version 0.7.1_CNY_2018")
+      .setFooter("Modbot created by Regis. ©Version 0.7.2")
       .addField('Member Update',
         `:pushpin: :white_check_mark: ${member.user} has joined the server!`)
       .addField('Member ID',
         `${member.id}`)
       .addField('Member Roles',
         `${guild.roles.find("name", "GREEN CLUB")}`)//This only display user roles at first join only
+      .addField('Message',
+        `Hi ${member.user.tag}, welcome to **bijs discord server**!\nMake sure you have read our rules and guides at #welcome .\nGo see what are the current game category we have, type **=games**.\nEnojy and have lots of lots of funs!`)
     bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel. 
     member.addRole(member.guild.roles.find("name", "GREEN CLUB")); //Grant roles if is user
 }
@@ -54,7 +59,7 @@ bot.on("message", function (message) {
       var embed = new Discord.RichEmbed()
       .setColor(0xff0505)
       .setTimestamp()
-      .setFooter("Modbot created by Regis. ©Version 0.7.1_CNY_2018")
+      .setFooter("Modbot created by Regis. ©Version 0.7.2")
       .addField('Bot Update',
         `:pushpin: :x: ${member.user} Bot Left.`)
       .addField('Bot ID',
@@ -66,7 +71,7 @@ bot.on("message", function (message) {
     var embed = new Discord.RichEmbed()
       .setColor(0xff0505)
       .setTimestamp()
-      .setFooter("Modbot created by Regis. ©Version 0.7.1_CNY_2018")
+      .setFooter("Modbot created by Regis. ©Version 0.7.2")
       .addField('Member Update',
         `:pushpin: :x: ${member.user} has left the server!`)
       .addField('Member ID',
@@ -131,13 +136,13 @@ if(command === "info") {
 }
 
 if(command === "stat") {
-message.channel.sendMessage("__**ModBot: Online**__\n*Version: 0.7.1_CNY_2018*");
+message.channel.sendMessage("__**ModBot: Online**__\n*Version: 0.7.2*");
 }
 if(command === "uptime") {
   message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
 }
 if(command === "games") {
- message.channel.sendMessage("Here are the current avaliable games category on bijs discord:\n\n**=lol** - League of Legends\n**=pubg** - PLAYERUNKNOWN'S BATTLEGROUNDS\n**=cs:go** - CS:GO\n**=ark** - Ark Survival\n**=dota** - dota/2\n**=overwatch** - OverWatch\n**=gta** - GTA\n**=watchdogs** - WatchDogs\n**=thecrew** - TheCrew\n");
+ message.channel.sendMessage("Here are the current avaliable games category on bijs discord:\n\n**=lol** - League of Legends\n**=pubg** - PLAYERUNKNOWN'S BATTLEGROUNDS\n**=cs:go** - CS:GO\n**=ark** - Ark Survival\n**=dota** - dota/2\n**=overwatch** - OverWatch\n**=gta** - GTA\n**=watchdogs** - WatchDogs\n**=thecrew** - TheCrew\n**=roblox** - Roblox\n");
 }
 
 //
@@ -264,23 +269,30 @@ let member = message.member;
 message.reply("You have successfully subscribe to role **Dota** for Dota category!");
 member.addRole(role).catch(console.error);
 }
+/*ROBLOX*/
+if(command === "roblox") {
+
+let role = message.guild.roles.find("name", "Roblox");
+let member = message.member;
+
+message.reply("You have sccessfully aubscribe to role **Roblox** for Roblox category!")
+}
 
 //End of Game category Roles
 
 //Livestream subscribe
 if(command === "streamnotify") {
 
-let role = message.guild.roles.find("name", "StreamNotify");
-let member = message.member;
-
-message.reply("You will be notify when our streamer when live!");
-member.addRole(role).catch(console.error);
+//let role = message.guild.roles.find("name", "StreamNotify");
+//let member = message.member;
+message.channel.sendMessage("StreamNotify is currently disabled. Sorry~");
+//message.reply("You will be notify when our streamer when live!");
+//member.addRole(role).catch(console.error);
 }
 //End of livestream subscribe
 
 //Event 
-
- //Christmas
+//Christmas
 /* if(command === "christmas2017") {
 
 let role = message.guild.roles.find("name", "Christmas 2017");
@@ -292,7 +304,7 @@ message.delete().catch(O_o=>{});
 } */
 //
 //CNY
-if(command === "cny2018") {
+/*if(command === "cny2018") {
 
 let role = message.guild.roles.find("name", "CNY 2018");
 let member = message.member;
@@ -300,7 +312,7 @@ let member = message.member;
 message.reply(":dog: **Happy CNY 2018!** :dog:");
 member.addRole(role).catch(console.error);
 message.delete().catch(O_o=>{});
-}  
+}*/  
 //
 //Milestone
 if(command === "300milestone") {
@@ -317,6 +329,7 @@ message.delete().catch(O_o=>{});
 // end of event
 
 //Staff command
+//kick
 if(command === "kick") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator"].includes(r.name)) )
     return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
@@ -337,7 +350,7 @@ await member.kick(reason)
 message.channel.sendMessage(`${member.user} has been kicked from server.\nKicked Member id: ${member.id}\nModerator: ${message.author}\nReason: ${reason}`);
 message.delete().catch(O_o=>{});
 }
-
+//ban
 if(command === "ban") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator"].includes(r.name)) )
     return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
