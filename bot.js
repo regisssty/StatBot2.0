@@ -79,20 +79,6 @@ bot.on("message", function (message) {
     bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel. 
 }
 });
-
-/* //guild member update
- bot.on("guildMemberUpdate", function(member) {
-    let guild = member.guild;
-    var embed = new Discord.RichEmbed()
-      .setColor('RANDOM')
-      .setTimestamp()
-      .addField('Member Update [Roles]',
-        `:pushpin: ${member.user} role has been updated from ${member.roles.id} to  ${member.roles.newMember}`)
-      .addField('Member ID',
-        `${member.id}`)
-    bot.channels.find("name", "mod-log").sendEmbed(embed); // change general to your preferred TEXT channel. 
-});  */
-
 //real time
 setInterval(function() {
 
@@ -123,7 +109,7 @@ const command = args.shift().toLowerCase();
 //Bot command start here
 //General commands
 if(command === "help") {
-  message.channel.sendMessage("__**Help Command**__\nPrefix: =\n\nhelp- Show this page\nping - Show Ping!\ninfo - Show ModBot information\nstat - Show ModBot's state\nuptime - Show how long ModBot's uptime\nsenthelp - Show sentinel help commands\nstaffhelp - Show staff help commands\nsuperstaffhelp - Show super staff help commands\nsayhelp - Show sayhelp(Disabled)");
+  message.channel.sendMessage("__**Help Command**__\nPrefix: =\n\nhelp- Show this page\nreport - Report user E.G(report mention_user reason)\nping - Show Ping!\ninfo - Show ModBot information\nstat - Show ModBot's state\nuptime - Show how long ModBot's uptime\nsenthelp - Show sentinel help commands\nstaffhelp - Show staff help commands\nsuperstaffhelp - Show super staff help commands\nsayhelp - Show sayhelp(Disabled)");
 }
 
 if(command === "ping") {
@@ -131,8 +117,14 @@ if(command === "ping") {
 }
 
 if(command === "info") {
-  message.channel.sendMessage("I am running on JavaScript created by @Rëgîš#6434");
+  //message.channel.sendMessage("I am running on JavaScript created by @Rëgîš#6434");
 /*   message.channel.sendMessage("Hi im ModBot, I love to eat pie."); */
+    var embed = new Discord.RichEmbed()
+      .setColor('0x6449B4')
+      .setTitle("About ModBot")
+      .setDescription("ModBot is a java programmed discord bot created by @Rëgîš#6434 base on discord.js library.\nThe porpose of making this bot is to actually auto assign roles to new user who join our server as you might have know that everyone is too common. We want something special, nice, friendly and give us the way to make things go around to our favor so we can deliver the good stuff to you and enjoy.")
+      .setThumbnail("https://cdn.discordapp.com/avatars/337177231841427478/6b7450d4757c58fc1c689ed62d259223.png")
+    message.channel.sendEmbed(embed);
 }
 
 if(command === "stat") {
@@ -144,7 +136,24 @@ if(command === "uptime") {
 if(command === "games") {
  message.channel.sendMessage("Here are the current avaliable games category on bijs discord:\n\n**=lol** - League of Legends\n**=pubg** - PLAYERUNKNOWN'S BATTLEGROUNDS\n**=cs:go** - CS:GO\n**=ark** - Ark Survival\n**=dota** - dota/2\n**=overwatch** - OverWatch\n**=gta** - GTA\n**=watchdogs** - WatchDogs\n**=thecrew** - TheCrew\n**=roblox** - Roblox\n");
 }
+if(command === "report") {
 
+let member = message.mentions.members.first();
+if(!member) return message.channel.send("User not found!");
+let reason = args.slice(1).join(' ');
+if(!reason) return message.channel.send("No reason detected!");
+message.delete().catch(O_o=>{});
+
+    var embed = new Discord.RichEmbed()
+      .setDescription("Reports")
+      .setColor("#15f153")
+      .addField("Reported User", `${member} with ID: ${member.id}`)
+      .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
+      .addField("Channel", message.channel)
+      //.addFeild("Time", message.createdAt)
+      .addField("Reason", reason)
+    bot.channels.find("name", "report").sendEmbed(embed);
+}
 //
 //sentinel help command
 if(command === "senthelp") {	
