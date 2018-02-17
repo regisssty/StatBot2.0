@@ -24,7 +24,7 @@ bot.on("message", function (message) {
       var embed = new Discord.RichEmbed()
       .setColor(0x15f153)
       .setTimestamp()
-      .setFooter("Modbot created by Regis. ©Version 0.7.2")
+      .setFooter("Modbot ©Version 0.7.2")
       .addField('Bot Update',
         `:pushpin: :wave: ${member.user} Bot Joined.`)
       .addField('Bot ID',
@@ -38,7 +38,7 @@ bot.on("message", function (message) {
     var embed = new Discord.RichEmbed()
       .setColor(0x015f153)
       .setTimestamp()
-      .setFooter("Modbot created by Regis. ©Version 0.7.2")
+      .setFooter("Modbot ©Version 0.7.2")
       .addField('Member Update',
         `:pushpin: :white_check_mark: ${member.user} has joined the server!`)
       .addField('Member ID',
@@ -59,7 +59,7 @@ bot.on("message", function (message) {
       var embed = new Discord.RichEmbed()
       .setColor(0xff0505)
       .setTimestamp()
-      .setFooter("Modbot created by Regis. ©Version 0.7.2")
+      .setFooter("Modbot ©Version 0.7.2")
       .addField('Bot Update',
         `:pushpin: :x: ${member.user} Bot Left.`)
       .addField('Bot ID',
@@ -71,7 +71,7 @@ bot.on("message", function (message) {
     var embed = new Discord.RichEmbed()
       .setColor(0xff0505)
       .setTimestamp()
-      .setFooter("Modbot created by Regis. ©Version 0.7.2")
+      .setFooter("Modbot ©Version 0.7.2")
       .addField('Member Update',
         `:pushpin: :x: ${member.user} has left the server!`)
       .addField('Member ID',
