@@ -109,11 +109,17 @@ const command = args.shift().toLowerCase();
 //Bot command start here
 //General commands
 if(command === "help") {
-  message.channel.sendMessage("__**Help Command**__\nPrefix: =\n\nhelp- Show this page\nreport - Report user E.G(report mention_user reason)\nping - Show Ping!\ninfo - Show ModBot information\nstat - Show ModBot's state\nuptime - Show how long ModBot's uptime\nsenthelp - Show sentinel help commands\nstaffhelp - Show staff help commands\nsuperstaffhelp - Show super staff help commands\nsayhelp - Show sayhelp(Disabled)");
+
+    var embed = new Discord.RichEmbed()
+      .setColor('0x6449B4')
+      .setTitle("__**Help command**__")
+      .setDescription("Prefix: =")
+      .addField("List of commands", "help- Show this page\nreport - Report user E.G(report mention_user reason)\nping - Show Ping!\ninfo - Show ModBot information\nstat - Show ModBot's state\nuptime - Show how long ModBot's uptime\nuserinfo - Display information of the user", true)
+    message.channel.sendEmbed(embed);
 }
 
 if(command === "ping") {
-  message.channel.sendMessage("Your ping is `" + `${Date.now() - message.createdTimestamp}` + " ms`");
+  message.channel.sendMessage("The respond between you to ModBot is `" + `${Date.now() - message.createdTimestamp}` + " ms`");
 }
 
 if(command === "info") {
@@ -124,18 +130,26 @@ if(command === "info") {
       .setTitle("About ModBot")
       .setDescription("ModBot is a java programmed discord bot created by @Rëgîš#6434 base on discord.js library.\nThe porpose of making this bot is to actually auto assign roles to new user who join our server as you might have know that everyone is too common. We want something special, nice, friendly and give us the way to make things go around to our favor so we can deliver the good stuff to you and enjoy.")
       .setThumbnail("https://cdn.discordapp.com/avatars/337177231841427478/6b7450d4757c58fc1c689ed62d259223.png")
+      .setFooter("Version 0.7.2")
     message.channel.sendEmbed(embed);
 }
 
 if(command === "stat") {
-message.channel.sendMessage("__**ModBot: Online**__\n*Version: 0.7.2*");
+message.channel.sendMessage("**ModBot: __Online__**");
 }
+
 if(command === "uptime") {
-  message.channel.sendMessage("I have been online for " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
+  message.channel.sendMessage("Uptime: " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
 }
+
 if(command === "games") {
- message.channel.sendMessage("Here are the current avaliable games category on bijs discord:\n\n**=lol** - League of Legends\n**=pubg** - PLAYERUNKNOWN'S BATTLEGROUNDS\n**=cs:go** - CS:GO\n**=ark** - Ark Survival\n**=dota** - dota/2\n**=overwatch** - OverWatch\n**=gta** - GTA\n**=watchdogs** - WatchDogs\n**=thecrew** - TheCrew\n**=roblox** - Roblox\n");
+    var embed = new Discord.RichEmbed()
+      .setColor('0x6449B4')
+      .setTitle("__**Game Category List**__")
+      .addField("Here are the current avaliable games category on bijs discord", "**=lol** - League of Legends\n**=pubg** - PLAYERUNKNOWN'S BATTLEGROUNDS\n**=cs:go** - CS:GO\n**=ark** - Ark Survival\n**=dota** - dota/2\n**=overwatch** - OverWatch\n**=gta** - GTA\n**=watchdogs** - WatchDogs\n**=thecrew** - TheCrew\n**=roblox** - Roblox\n");
+    message.channel.sendEmbed(embed);
 }
+
 if(command === "report") {
 
 let member = message.mentions.members.first();
@@ -155,6 +169,13 @@ message.delete().catch(O_o=>{});
       .addField("Reason", reason)
     bot.channels.find("name", "report").sendEmbed(embed);
 }
+
+if (command === "userinfo") {
+let member = message.mentions.members.first();
+if (!member) return message.channel.send("Invalid user. Please provide a valid **Mention**.");
+message.channel.sendMessage(`**UserInfo:** ${member} **ID:** ${member.id}`);
+}
+
 //
 //sentinel help command
 if(command === "senthelp") {	
@@ -400,6 +421,14 @@ message.delete().catch(O_o=>{});
     bot.channels.find("name", "member-log").sendEmbed(embed);
 	member.addRole(role).catch(console.error);
 }
+/* if (command === "userinfo") {
+let member =  message.mentions.members();
+if (!member) return message.channel.send("Invalid user. Please check you have type the correct one.");
+
+    var embed = new Discord.RichEmbed()
+	
+} */
+	
 //
 //Super staff command
 
