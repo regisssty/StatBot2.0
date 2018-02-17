@@ -22,7 +22,7 @@ bot.on("message", function (message) {
     if (member.bot) {
       let guild = member.guild;
       var embed = new Discord.RichEmbed()
-      .setColor(0x00AE86)
+      .setColor(0x15f153)
       .setTimestamp()
       .setFooter("Modbot created by Regis. ©Version 0.7.2")
       .addField('Bot Update',
@@ -36,7 +36,7 @@ bot.on("message", function (message) {
 
     let guild = member.guild;
     var embed = new Discord.RichEmbed()
-      .setColor(0x00AE86)
+      .setColor(0x015f153)
       .setTimestamp()
       .setFooter("Modbot created by Regis. ©Version 0.7.2")
       .addField('Member Update',
@@ -146,11 +146,12 @@ message.delete().catch(O_o=>{});
 
     var embed = new Discord.RichEmbed()
       .setDescription("Reports")
-      .setColor("#15f153")
+      .setColor("#ffff00")
+      .setTimestamp()
+      .setFooter("ReportSystem v0.1.66 ")
       .addField("Reported User", `${member} with ID: ${member.id}`)
       .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
       .addField("Channel", message.channel)
-      //.addFeild("Time", message.createdAt)
       .addField("Reason", reason)
     bot.channels.find("name", "report").sendEmbed(embed);
 }
@@ -162,7 +163,7 @@ if(command === "senthelp") {
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
 /*   message.author.sendMessage("__**Sentinel Help Commands**__\n\nkick - Kick member from server"); */
-  message.author.sendMessage("__**Sentinel Help Commands**__\n\nComing Soon!");
+  message.author.sendMessage("__**Sentinel Help Commands**__\n\\nmute - Mute user from voice and text channel");
 }
 
 //
@@ -172,7 +173,7 @@ if(command === "staffhelp") {
     return message.reply("You have no permission to use this command. Reason: You are not a staff!"); 
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
-  message.author.sendMessage("__**Staff Help Commands**__\n\nkick - Kick member from server\nban - Ban member from server");
+  message.author.sendMessage("__**Staff Help Commands**__\n\nkick - Kick member from server\nban - Ban member from server\nmute - Mute user from voice and text channel");
 }
 
 //
@@ -182,7 +183,7 @@ if(command === "superstaffhelp") {
     return message.reply("You have no permission to use this command. Reason: You are not a superstaff!"); 
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
-  message.author.sendMessage("__**SuperStaff Help Commands**__\n\nkick - Kick member\nban - Ban member");
+  message.author.sendMessage("__**SuperStaff Help Commands**__\n\nkick - Kick member\nban - Ban member from server\nmute - Mute user from voice and text channel");
 }
 //
 //global help command for [SYSTEM], [DiscordOwner], [Admin], [Manager], [Moderator], [Sentinel]
@@ -380,7 +381,25 @@ await member.ban(reason)
 message.channel.sendMessage(`${member.user.tag} has been banned from server.\nBanned Member id: ${member.id}\nModerator: ${message.author}\nReason: ${reason}`);
 message.delete().catch(O_o=>{});
 }
+//mute
+if(command === "mute") {
+  if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator", "Sentinel"].includes(r.name)) )
+    return message.reply("Invalid Command!");
 
+let member = message.mentions.members.first();
+if(!member) return message.channel.send("User not found!");
+let reason = args.slice(1).join(' ');
+if(!reason) return message.channel.send("No reason detected!");
+let role = message.guild.roles.find("name", "Muted");
+message.delete().catch(O_o=>{});
+
+    var embed = new Discord.RichEmbed()
+      .setColor("#15f153")
+      .setTimestamp()
+      .setDescription(`**Action:** Muted\n**Target:** ${member.user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason}`);
+    bot.channels.find("name", "member-log").sendEmbed(embed);
+	member.addRole(role).catch(console.error);
+}
 //
 //Super staff command
 
