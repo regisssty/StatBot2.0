@@ -412,7 +412,7 @@ if(!member) return message.channel.send("User not found!");
 let reason = args.slice(1).join(' ');
 if(!reason) return message.channel.send("No reason detected!");
 let role = message.guild.roles.find("name", "Muted");
-member.serverMute();
+member.setMute();
 message.delete().catch(O_o=>{});
 
     var embed = new Discord.RichEmbed()
