@@ -306,7 +306,8 @@ if(command === "roblox") {
 let role = message.guild.roles.find("name", "Roblox");
 let member = message.member;
 
-message.reply("You have sccessfully aubscribe to role **Roblox** for Roblox category!")
+message.reply("You have sccessfully aubscribe to role **Roblox** for Roblox category!");
+member.addRole(role).catch(console.error);
 }
 
 //End of Game category Roles
