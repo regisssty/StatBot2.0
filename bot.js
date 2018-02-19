@@ -2,12 +2,32 @@ const Discord = require('discord.js');
 const PREFIX = "=";
 var bot = new Discord.Client();
 
+const http = require('http');
+const express = require('express');
+const app = express();
+app.get("/", (request, response) => {
+  console.log(Date.now() + " Ping Received");
+  response.sendStatus(200);
+});
+app.listen(process.env.PORT);
+setInterval(() => {
+  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
+}, 280000);
+
 //time travel
 var upSecs = 0
 var upMins = 0
 var upHours = 0
 var upDays = 0
 
+//debug system
+//bot.on("error", (e) => console.error(e));
+//bot.on("warn", (e) => console.warn(e));
+//bot.on("debug", (e) => console.info(e));
+
+//Bot and system version
+var MODver = `ModBot v0.7.3`;
+var RepVer = `ReportSystem v0.1.66`;
 
 bot.on("message", function (message) {
     console.log(message.content);
@@ -24,21 +44,21 @@ bot.on("message", function (message) {
       var embed = new Discord.RichEmbed()
       .setColor(0x15f153)
       .setTimestamp()
-      .setFooter("Modbot ©Version 0.7.2")
+      .setFooter(MODver)
       .addField('Bot Update',
         `:pushpin: :wave: ${member.user} Bot Joined.`)
       .addField('Bot ID',
         `${member.id}`)
       .addField('Message',
-        `Hi ${member.user.tag}, welcome to **bijs discord server**!\nMake sure you have read our rules and guides at #welcome .\nGo see what are the current game category we have, type **=games**.\nEnojy and have lots of lots of funs!`)
-      bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel.  
+        `Hi ${member.user.tag}, welcome to **bijs discord server**!\nMake sure you have read our rules and guides at #welcome .\nGo see what are the current game category we have, type **=games**.\nEnjoy and have lots of lots of funs!`)
+      bot.channels.find("name", "member-log").send(embed); // announce on preferred text channel.  
     } else {
 
     let guild = member.guild;
     var embed = new Discord.RichEmbed()
       .setColor(0x015f153)
       .setTimestamp()
-      .setFooter("Modbot ©Version 0.7.2")
+      .setFooter(MODver)
       .addField('Member Update',
         `:pushpin: :white_check_mark: ${member.user} has joined the server!`)
       .addField('Member ID',
@@ -47,7 +67,7 @@ bot.on("message", function (message) {
         `${guild.roles.find("name", "GREEN CLUB")}`)//This only display user roles at first join only
       .addField('Message',
         `Hi ${member.user.tag}, welcome to **bijs discord server**!\nMake sure you have read our rules and guides at #welcome .\nGo see what are the current game category we have, type **=games**.\nEnojy and have lots of lots of funs!`)
-    bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel. 
+    bot.channels.find("name", "member-log").send(embed); // announce on preferred text channel. 
     member.addRole(member.guild.roles.find("name", "GREEN CLUB")); //Grant roles if is user
 }
 });
@@ -59,24 +79,24 @@ bot.on("message", function (message) {
       var embed = new Discord.RichEmbed()
       .setColor(0xff0505)
       .setTimestamp()
-      .setFooter("Modbot ©Version 0.7.2")
+      .setFooter(MODver)
       .addField('Bot Update',
         `:pushpin: :x: ${member.user} Bot Left.`)
       .addField('Bot ID',
         `${member.id}`)
-      bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel.  
+      bot.channels.find("name", "member-log").send(embed); // announce on preferred text channel.  
     } else {
 
     let guild = member.guild;
     var embed = new Discord.RichEmbed()
       .setColor(0xff0505)
       .setTimestamp()
-      .setFooter("Modbot ©Version 0.7.2")
+      .setFooter(MODver)
       .addField('Member Update',
         `:pushpin: :x: ${member.user} has left the server!`)
       .addField('Member ID',
         `${member.id}`)
-    bot.channels.find("name", "member-log").sendEmbed(embed); // announce on preferred text channel. 
+    bot.channels.find("name", "member-log").send(embed); // announce on preferred text channel. 
 }
 });
 //real time
@@ -102,7 +122,6 @@ bot.on("message", async message => {
 	
 if(message.author.bot) return;
 if(message.content.indexOf(PREFIX) !== 0) return;
-
 var args = message.content.substring(PREFIX.length).split(" ");
 const command = args.shift().toLowerCase();
 
@@ -115,11 +134,11 @@ if(command === "help") {
       .setTitle("__**Help command**__")
       .setDescription("Prefix: =")
       .addField("List of commands", "help- Show this page\nreport - Report user E.G(report mention_user reason)\nping - Show Ping!\ninfo - Show ModBot information\nstat - Show ModBot's state\nuptime - Show how long ModBot's uptime\nuserinfo - Display information of the user", true)
-    message.channel.sendEmbed(embed);
+    message.channel.send(embed);
 }
 
 if(command === "ping") {
-  message.channel.sendMessage("The respond between you to ModBot is `" + `${Date.now() - message.createdTimestamp}` + " ms`");
+  message.channel.send("The respond between you to ModBot is `" + `${Date.now() - message.createdTimestamp}` + " ms`");
 }
 
 if(command === "info") {
@@ -130,16 +149,16 @@ if(command === "info") {
       .setTitle("About ModBot")
       .setDescription("ModBot is a java programmed discord bot created by @Rëgîš#6434 base on discord.js library.\nThe porpose of making this bot is to actually auto assign roles to new user who join our server as you might have know that everyone is too common. We want something special, nice, friendly and give us the way to make things go around to our favor so we can deliver the good stuff to you and enjoy.")
       .setThumbnail("https://cdn.discordapp.com/avatars/337177231841427478/6b7450d4757c58fc1c689ed62d259223.png")
-      .setFooter("Version 0.7.2")
-    message.channel.sendEmbed(embed);
+      .setFooter("Version 0.7.3")
+    message.channel.send(embed);
 }
 
 if(command === "stat") {
-message.channel.sendMessage("**ModBot: __Online__**");
+message.channel.send("**ModBot: __Online__**");
 }
 
 if(command === "uptime") {
-  message.channel.sendMessage("Uptime: " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
+  message.channel.send("Uptime: " +upDays+ " Days, " +upHours+ " Hours, " +upMins+ " Minutes, " +upSecs+ " Seconds" );
 }
 
 if(command === "games") {
@@ -147,7 +166,7 @@ if(command === "games") {
       .setColor('0x6449B4')
       .setTitle("__**Game Category List**__")
       .addField("Here are the current avaliable games category on bijs discord", "**=lol** - League of Legends\n**=pubg** - PLAYERUNKNOWN'S BATTLEGROUNDS\n**=cs:go** - CS:GO\n**=ark** - Ark Survival\n**=dota** - dota/2\n**=overwatch** - OverWatch\n**=gta** - GTA\n**=watchdogs** - WatchDogs\n**=thecrew** - TheCrew\n**=roblox** - Roblox\n");
-    message.channel.sendEmbed(embed);
+    message.channel.send(embed);
 }
 
 if(command === "report") {
@@ -162,59 +181,58 @@ message.delete().catch(O_o=>{});
       .setDescription("Reports")
       .setColor("#ffff00")
       .setTimestamp()
-      .setFooter("ReportSystem v0.1.66 ")
+      .setFooter(RepVer)
       .addField("Reported User", `${member} with ID: ${member.id}`)
       .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
       .addField("Channel", message.channel)
       .addField("Reason", reason)
-    bot.channels.find("name", "report").sendEmbed(embed);
+    bot.channels.find("name", "report").send(embed).then(console.log(`[INFO] User: ${message.author.tag} issued command report!`));
 }
 
 if (command === "userinfo") {
 let member = message.mentions.members.first();
 if (!member) return message.channel.send("Invalid user. Please provide a valid **Mention**.");
-message.channel.sendMessage(`**UserInfo:** ${member} **ID:** ${member.id}`);
+message.channel.send(`**UserInfo:** ${member} **ID:** ${member.id}`);
 }
-
 //
 //sentinel help command
 if(command === "senthelp") {	
   if(!message.member.roles.some(r=>["Sentinel"].includes(r.name)) )
-    return message.reply("You have no permission to use this command. Reason: You are not a Sentinel!"); 
+    return message.reply("You have no permission to use this command. Reason: You are not a Sentinel!").then(console.log(`[WARNING] User: ${message.author.tag} tried to issue command senthelp!`)); 
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
 /*   message.author.sendMessage("__**Sentinel Help Commands**__\n\nkick - Kick member from server"); */
-  message.author.sendMessage("__**Sentinel Help Commands**__\n\\nmute - Mute user from voice and text channel");
+  message.author.send("__**Sentinel Help Commands**__\n\\nmute - Mute user from voice and text channel").then(console.log(`[INFO] User: ${message.author.tag} issued command senthelp!`));
 }
 
 //
 // mod, supermod, admin, owner help command
 if(command === "staffhelp") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator"].includes(r.name)) )
-    return message.reply("You have no permission to use this command. Reason: You are not a staff!"); 
+    return message.reply("You have no permission to use this command. Reason: You are not a staff!").then(console.log(`[WARNING] User: ${message.author.tag} tried to issue command staffhelp!`)); 
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
-  message.author.sendMessage("__**Staff Help Commands**__\n\nkick - Kick member from server\nban - Ban member from server\nmute - Mute user from voice and text channel");
+  message.author.send("__**Staff Help Commands**__\n\nkick - Kick member from server\nban - Ban member from server\nmute - Mute user from voice and text channel").then(console.log(`[INFO] User: ${message.author.tag} issued command staffhelp!`));
 }
 
 //
 // super mod, admin, owner help command
 if(command === "superstaffhelp") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator"].includes(r.name)) )
-    return message.reply("You have no permission to use this command. Reason: You are not a superstaff!"); 
+    return message.reply("You have no permission to use this command. Reason: You are not a superstaff!").then(console.log(`[WARNING] User: ${message.author.tag} tried to issue command superstaffhelp!`)); 
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
-  message.author.sendMessage("__**SuperStaff Help Commands**__\n\nkick - Kick member\nban - Ban member from server\nmute - Mute user from voice and text channel");
+  message.author.send("__**SuperStaff Help Commands**__\n\nkick - Kick member\nban - Ban member from server\nmute - Mute user from voice and text channel").then(console.log(`[INFO] User: ${message.author.tag} issued command superstaffhelp!`));
 }
 //
 //global help command for [SYSTEM], [DiscordOwner], [Admin], [Manager], [Moderator], [Sentinel]
 //============
 if(command === "sayhelp") {
   if(!message.member.roles.some(r=>["YOUR KING", "2ns in command", "Super Moderator", "Moderator", "Sentinel"]) )
-    return message.reply("Invalid command enter. Reason: Your roles for this command has been rejected.");
+    return message.reply("Invalid command enter. Reason: Your roles for this command has been rejected.").then(console.log(`[WARNING] User: ${message.author.tag} tried to issue command sayhelp!`));
 
   message.reply(":mailbox_with_mail: I have DM you the command.");
-  message.author.sendMessage("__**sayhelp command**__\n\nsay - [SYSTEM] msg (For host only)\nownersay - [DiscordOwner] msg (Owner of the discord server only)\nadminsay - [Admin] msg (Admin use)\nsupersay - [Manager] msg (Super Moderator use)\nmodsay - [Moderator] msg (Moderator use)\nsentsay - [Sentinel] msg (Sentinel use)");
+  message.author.send("__**sayhelp command**__\n\nsay - [SYSTEM] msg (For host only)\nownersay - [DiscordOwner] msg (Owner of the discord server only)\nadminsay - [Admin] msg (Admin use)\nsupersay - [Manager] msg (Super Moderator use)\nmodsay - [Moderator] msg (Moderator use)\nsentsay - [Sentinel] msg (Sentinel use)").then(console.log(`[INFO] User: ${message.author.tag} issued command sayhelp!`));
 }
 //
 
@@ -306,8 +324,7 @@ if(command === "roblox") {
 let role = message.guild.roles.find("name", "Roblox");
 let member = message.member;
 
-message.reply("You have sccessfully aubscribe to role **Roblox** for Roblox category!");
-member.addRole(role).catch(console.error);
+message.reply("You have sccessfully aubscribe to role **Roblox** for Roblox category!")
 }
 
 //End of Game category Roles
@@ -317,7 +334,7 @@ if(command === "streamnotify") {
 
 //let role = message.guild.roles.find("name", "StreamNotify");
 //let member = message.member;
-message.channel.sendMessage("StreamNotify is currently disabled. Sorry~");
+message.channel.send("StreamNotify is currently disabled. Sorry~");
 //message.reply("You will be notify when our streamer when live!");
 //member.addRole(role).catch(console.error);
 }
@@ -364,7 +381,7 @@ message.delete().catch(O_o=>{});
 //kick
 if(command === "kick") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator"].includes(r.name)) )
-    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+    return message.reply("You have no permission to use this command!").then(console.log(`[WARNING] User: ${message.author.tag} tried to issue command kick!`)); 
 
 let member = message.mentions.members.first();
 if(!member)
@@ -379,13 +396,13 @@ if(!reason)
 
 await member.kick(reason)
   .catch(error => message.reply(`Sorry ${message.author}, I couldn't kick because of : ${error}`));
-message.channel.sendMessage(`${member.user} has been kicked from server.\nKicked Member id: ${member.id}\nModerator: ${message.author}\nReason: ${reason}`);
+message.channel.send(`${member.user} has been kicked from server.\nKicked Member id: ${member.id}\nModerator: ${message.author}\nReason: ${reason}`).then(console.log(`[INFO] User: ${message.author.tag} issued command kick!`));
 message.delete().catch(O_o=>{});
 }
 //ban
 if(command === "ban") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator"].includes(r.name)) )
-    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+    return message.reply("You have no permission to use this command!").then(console.log(`[WARNING] User: ${message.author.tag} tried to issue command ban!`)); 
 
 let member = message.mentions.members.first();
 if(!member)
@@ -400,13 +417,13 @@ if(!reason)
 
 await member.ban(reason)
   .catch(error => message.reply(`Sorry ${message.author}, I couldn't ban because of : ${error}`));
-message.channel.sendMessage(`${member.user.tag} has been banned from server.\nBanned Member id: ${member.id}\nModerator: ${message.author}\nReason: ${reason}`);
+message.channel.send(`${member.user.tag} has been banned from server.\nBanned Member id: ${member.id}\nModerator: ${message.author}\nReason: ${reason}`).then(console.log(`[INFO] User: ${message.author.tag} issued command ban!`));
 message.delete().catch(O_o=>{});
 }
 //mute
 if(command === "mute") {
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command", "Super Moderator", "Moderator", "Sentinel"].includes(r.name)) )
-    return message.reply("Invalid Command!");
+    return message.reply("Invalid Command!").then(console.log(`[WARNING] User: ${message.author.tag} tried to issue command mute!`));
 
 let member = message.mentions.members.first();
 if(!member) return message.channel.send("User not found!");
@@ -419,7 +436,7 @@ message.delete().catch(O_o=>{});
       .setColor("#15f153")
       .setTimestamp()
       .setDescription(`**Action:** Muted\n**Target:** ${member.user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason}`);
-    bot.channels.find("name", "member-log").sendEmbed(embed);
+    bot.channels.find("name", "member-log").send(embed).then(console.log(`[INFO] User: ${message.author.tag} issued command mute!`));
 	member.addRole(role).catch(console.error);
 }
 /* if (command === "userinfo") {
@@ -438,66 +455,66 @@ if (!member) return message.channel.send("Invalid user. Please check you have ty
 //==========
 if(command === "say") {	
   if(!message.member.roles.some(r=>["YOUR KING", "2nd in command"].includes(r.name)) )
-    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+    return message.reply("You have no permission to use this command!").then(console.log(`[WARNING] User: ${message.author.tag} tried to issue command say!`)); 
 
   var sayMessage = args.join(" ");
   message.delete().catch(O_o=>{});
-  message.channel.send("**[SYSTEM]** " + sayMessage);
+  message.channel.send("**[SYSTEM]** " + sayMessage).then(console.log(`[INFO] User: ${message.author.tag} issued command say!`));
 }
 
 //
 // discord owner
 if(command === "ownersay") {	
   if(!message.member.roles.some(r=>["YOUR KING"].includes(r.name)) )
-    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+    return message.reply("You have no permission to use this command!").then(console.log(`[WARNING] User: ${message.author.tag} tried to issue command ownersay!`)); 
 
   var sayMessage = args.join(" ");
   message.delete().catch(O_o=>{});
-  message.channel.send("**[DiscordOwner]** " + sayMessage);
+  message.channel.send("**[DiscordOwner]** " + sayMessage).then(console.log(`[INFO] User: ${message.author.tag} issued command ownersay!`));
 }
 
 //
 // admin
 if(command === "adminsay") {	
   if(!message.member.roles.some(r=>["2nd in command"].includes(r.name)) )
-    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+    return message.reply("You have no permission to use this command!").then(console.log(`[WARNING] User: ${message.author.tag} tried to issue command adminsay!`)); 
 
   var sayMessage = args.join(" ");
   message.delete().catch(O_o=>{});
-  message.channel.send("**[Admin]** " + sayMessage);
+  message.channel.send("**[Admin]** " + sayMessage).then(console.log(`[INFO] User: ${message.author.tag} issued command adminsay!`));
 }
 
 //
 // super mod
 if(command === "supersay") {	
   if(!message.member.roles.some(r=>["Super Moderator"].includes(r.name)) )
-    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+    return message.reply("You have no permission to use this command!").then(console.log(`[WARNING] User: ${message.author.tag} tried to issue command supersay!`)); 
 
   var sayMessage = args.join(" ");
   message.delete().catch(O_o=>{});
-  message.channel.send("**[Manager]** " + sayMessage);
+  message.channel.send("**[Manager]** " + sayMessage).then(console.log(`[INFO] User: ${message.author.tag} issued command supersay!`));
 }
 
 //
 // mod
 if(command === "modsay") {	
   if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+    return message.reply("You have no permission to use this command!").then(console.log(`[WARNING] User: ${message.author.tag} tried to issue command modsay!`)); 
 
   var sayMessage = args.join(" ");
   message.delete().catch(O_o=>{});
-  message.channel.send("**[Moderator]** " + sayMessage);
+  message.channel.send("**[Moderator]** " + sayMessage).then(console.log(`[INFO] User: ${message.author.tag} issued command modsay!`));
 }
 
 //
 //sentinel
 if(command === "sentsay") {	
   if(!message.member.roles.some(r=>["Sentinel"].includes(r.name)) )
-    return message.reply("You have no permission to use this command! If you think is an error, please take a screenshot of this issue and submit to us. Thanks"); 
+    return message.reply("You have no permission to use this command!").then(console.log(`[WARNING] User: ${message.author.tag} tried to issue command say!`)); 
 
   var sayMessage = args.join(" ");
   message.delete().catch(O_o=>{});
-  message.channel.send("**[Sentinel]** " + sayMessage);
+  message.channel.send("**[Sentinel]** " + sayMessage).then(console.log(`[INFO] User: ${message.author.tag} issued command sentsay!`));
 }
 });
 
