@@ -1,20 +1,26 @@
 {
+  "//1": "describes your app and its dependencies",
+  "//2": "https://docs.npmjs.com/files/package.json",
+  "//3": "updating this file will download and update your packages",
   "name": "ModBot",
-  "description": "Information",
   "version": "0.7.3",
+  "description": "ModBot ",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
   },
   "dependencies": {
+    "express": "^4.16.2",
     "discord.js": "11.3.0",
     "request": "^2.83.0",
-    "ytdl-core" :  "github:fent/node-ytdl-core#master",
-    "node-opus" : "^0.2.7",
-    "express": "^4.16.2",
-  }
+    "ytdl-core": "^0.20.1",
+    "node-opus": "^0.2.7"
+  },
   "engines": {
     "node": "8.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/welcome-project"
   },
   "license": "MIT",
   "keywords": [
