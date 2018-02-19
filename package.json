@@ -1,15 +1,25 @@
 {
-  "name": "StatBot",
+  "name": "ModBot",
   "description": "Information",
-  "version": "0.6.7",
+  "version": "0.7.3",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
   },
   "dependencies": {
     "discord.js": "11.3.0",
-    "request": "2.81.0",
+    "request": "^2.83.0",
     "ytdl-core" :  "github:fent/node-ytdl-core#master",
-    "node-opus" : "^0.2.1"
+    "node-opus" : "^0.2.7",
+    "express": "^4.16.2",
   }
+  "engines": {
+    "node": "8.x"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
 }
